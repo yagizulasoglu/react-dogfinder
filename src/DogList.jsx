@@ -1,27 +1,32 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 
-function DogList({ dogsList, isLoading, getDogs }) {
+/** Shows a list of all dogs
+ *
+ * Props:
+ * - dogsList: array of all dogs.
+ * Each dog is representing an object with info about them.
+ *
+ *
+ * App -> DogFinder -> DogList
+ *
+ */
 
-  function showLoading() {
-    return <div>Loading</div>;
-  }
+function DogList({ dogsList }) {
 
   function showDogs() {
     return <div>
       {dogsList.map(dog => (
-        <Link key={dog.name} to={`dogs/${dog.name}`}>{dog.name}</Link>
+        <div>
+          <img src={`../public/${dog.src}.jpg`}/>
+          <Link key={dog.name} to={`dogs/${dog.name}`}>{dog.name}</Link>
+        </div>
       ))}
     </div>;
   }
 
-  if (isLoading) getDogs();
-
   return (<div>
-    {isLoading
-      ? showLoading()
-      : showDogs()}
+      {showDogs()}
   </div>);
 }
 

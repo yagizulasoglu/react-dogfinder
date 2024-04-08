@@ -1,6 +1,6 @@
 import { Navigate, BrowserRouter, Route, Routes } from 'react-router-dom';
 import DogList from './DogList';
-import DogDetails from './DogDetails';
+import FilterDogs from './FilterDogs';
 import { useState } from 'react';
 
 /** Checks the current state of AJAX request,
@@ -36,7 +36,7 @@ function DogFinder() {
       {isLoading ? <div>Loading...</div> : <BrowserRouter>
         <Routes>
           <Route element={<DogList dogsList={dogsList} />} path="/" />
-          <Route element={<DogDetails dogsList={dogsList} />} path="/dogs/:name" />
+          <Route element={<FilterDogs dogsList={dogsList} />} path="/dogs/:name" />
           <Route element={<Navigate to="/" />} path="*" />
         </Routes>
       </BrowserRouter>}

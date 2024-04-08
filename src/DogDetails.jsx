@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 /** Shows details about a dog
@@ -12,21 +11,17 @@ import { Link } from "react-router-dom";
  *
  */
 
-function DogDetails({ dogsList }) {
-
-  const { name } = useParams();
-  const dog = dogsList.filter(dog => dog.name === name)[0];
+function DogDetails({ dog }) {
 
   function showDog() {
     return <div>
-      <img src={`../public/${dog.src}.jpg`}/>
+      <img src={`/${dog.src}.jpg`}/>
       <p>{dog.name}</p>
       <p>{dog.age}</p>
       <p>{dog.facts}</p>
       <Link to={'/'}>Go Back!</Link>
     </div>;
   }
-
 
   return (<div>
       {showDog()}

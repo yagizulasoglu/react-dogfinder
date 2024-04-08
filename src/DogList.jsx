@@ -17,9 +17,9 @@ function DogList({ dogsList }) {
   function showDogs() {
     return <div>
       {dogsList.map(dog => (
-        <div>
+        <div key={dog.name}>
           <img src={`../public/${dog.src}.jpg`}/>
-          <Link key={dog.name} to={`dogs/${dog.name}`}>{dog.name}</Link>
+          <Link to={`dogs/${dog.name}`}>{dog.name}</Link>
         </div>
       ))}
     </div>;

@@ -1,6 +1,28 @@
+import { useParams } from "react-router-dom";
 
+function DogDetails({ dogsList, isLoading, getDogs }) {
 
-function DogDetails ({dogsList}) {
+  const { name } = useParams();
+  const dog = dogsList.filter(dog => dog.name === name);
 
-  dogsList.filter(dog =>)
+  function showLoading() {
+    return <div>Loading</div>;
+  }
+
+  function showDog() {
+    return <div>
+      dog
+    </div>;
+  }
+
+  if (isLoading) getDogs();
+
+  return (<div>
+    {isLoading
+      ? showLoading()
+      : showDog()}
+  </div>);
+
 }
+
+export default DogDetails;
